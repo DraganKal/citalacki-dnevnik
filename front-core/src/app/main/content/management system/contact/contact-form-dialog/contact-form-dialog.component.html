@@ -1,0 +1,170 @@
+<div class="addContainer">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about contact-header">
+            <div class="contact-details-heading">
+              <div class="contact-details-name mb-2">{{dialogTitle}}</div>
+              <div *ngIf="isDetails" class="badge" [ngClass] = "{'col-cyan': contact.contactType ==='DOCTOR', 'col-orange': contact.contactType ==='RELATIVE', 'col-green': contact.contactType === 'OTHER', 'col-purple': contact.contactType === 'CONTRACTUAL_PARTNER'}">{{contact.contactType}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content *ngIf="!isDetails">
+      <form class="register-form m-4" [formGroup]="contactForm">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName" required>
+                <mat-icon matSuffix>face</mat-icon>
+                <mat-error *ngIf="contactForm.get('firstName').hasError('required')">
+                  First name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="lastName" required>
+                <mat-icon matSuffix>tag_faces</mat-icon>
+                <mat-error *ngIf="contactForm.get('lastName').hasError('required')">
+                  Last name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <input matInput formControlName="phone" >
+                  <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email">
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="contactForm.get('email').hasError('email') && contactForm.get('email').touched">
+                Please enter a valid email address
+              </mat-error>
+              </mat-form-field>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city">
+                <mat-icon matSuffix>location_city</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street">
+                <mat-icon matSuffix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>House number</mat-label>
+                  <input matInput formControlName="houseNumber" >
+                </mat-form-field>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Zip</mat-label>
+                  <input matInput formControlName="zip" type="number">
+                </mat-form-field>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Contact Type</mat-label>
+                  <mat-select formControlName="contactType" (selectionChange) ="contactTypeChanged($event)">
+                    <mat-option value="DOCTOR" selected>Doctor</mat-option>
+                    <mat-option value="RELATIVE">Relative</mat-option>
+                    <mat-option value="CONTRACTUAL_PARTNER">Contractual partner</mat-option>
+                    <mat-option value="OTHER">Other</mat-option>
+                  </mat-select>
+                  <mat-icon matSuffix>account_box</mat-icon>
+                  <mat-error *ngIf="contactForm.get('contactType').hasError('required')">
+                    Contact type is required
+                  </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2" *ngIf="isContactTypeOther">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Contact type other</mat-label>
+                <input matInput formControlName="contactTypeOther" required>
+                <mat-icon matSuffix>account_box</mat-icon>
+                <mat-error *ngIf="contactForm.get('contactTypeOther').hasError('required')">
+                  Contact type other is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+              <mat-form-field class="example-full-width mb-3" appearance="outline">
+                <mat-label>Note</mat-label>
+                <textarea matInput formControlName="note"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row">
+              <button mat-raised-button color="primary" [disabled]="!contactForm.valid"
+                [mat-dialog-close]="contactForm.getRawValue()">Save</button>
+              <button mat-raised-button color="warn" (click)="dialogRef.close()" tabindex="-1">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="isDetails" class="contact-details">
+      <div mat-dialog-content>
+        <mat-card-content>
+          <div class="contact-details-field">
+            <i class="material-icons-two-tone color-icon">email</i>
+            <div class="contact-detail-info"> {{contact.email}}
+            </div>
+          </div>
+          <div class="contact-details-field">
+            <i class="material-icons-two-tone color-icon">phonelink_ring</i>
+            <div class="contact-detail-info"> {{contact.phone}}
+            </div>
+          </div>
+          <!-- <div class="contact-details-field">
+            <i class="material-icons-two-tone color-icon">cake</i>
+            <div class="contact-detail-info"> {{contacts.birthDate | date: 'MMMM d, yyyy'}}
+            </div>
+          </div> -->
+          <div class="contact-details-field">
+            <i class="material-icons-two-tone color-icon">location_on</i>
+            <div class="contact-detail-info"> {{contact.houseNumber}}, {{contact.street}}, {{contact.city}}
+            </div>
+          </div>
+          <div class="contact-details-field">
+            <i class="material-icons-two-tone color-icon">note</i>
+            <div class="contact-detail-info"> {{contact.note}}
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </div>
+
+</div>
+  

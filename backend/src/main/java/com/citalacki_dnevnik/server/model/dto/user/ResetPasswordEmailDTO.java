@@ -1,0 +1,10 @@
+package com.citalacki_dnevnik.server.model.dto.user;
+
+import lombok.Data;
+
+@Data
+public class ResetPasswordEmailDTO {
+
+    String email;
+
+}

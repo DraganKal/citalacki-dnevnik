@@ -1,0 +1,78 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Practice management'" [items]="['Practice management edit']" [active_item]="practice? practice.name: ''"></app-breadcrumb>
+      </div>
+      <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="contact-grid profile-image">
+              <img [src]="logo? logo: './assets/images/user/admin.jpg'" alt="">
+            </div>
+          </div>
+          <div class="card">
+            <div class="header">
+              <h2>About Practice</h2>
+            </div>
+            <div class="tab-pane body active" id="about">
+              <small class="text-muted">Name: </small>
+              <p>{{this.practice? this.practice.name: ''}}</p>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                  <div class="header">
+                    <h2>Settings</h2>
+                  </div>
+                  <div class="body">
+                    <form [formGroup]="form">
+                    <div class="example-container">
+                      <mat-form-field  class="example-full-width" appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input formControlName="name" matInput>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width mb-3">
+                        <ngx-mat-file-input matInput formControlName="logoUrl" placeholder="Upload Logo" (change) = "imageUpload($event)">
+                        </ngx-mat-file-input>
+                        <mat-icon matSuffix>folder</mat-icon>
+                      </mat-form-field>
+                    </div>
+                    </form>
+                  </div>
+                  <div class="header">
+                    <h2><strong>Color</strong> settings</h2>
+                  </div>
+                  <div class="body">
+                    <div class="theme-setting-options">
+                      <ul class="choose-theme list-unstyled mb-0">
+                        <li class="d-inline">
+                          <div [style.background]="colorHex1"
+                          [cpPosition]="'left'"
+                          [cpPositionOffset]="'50%'"
+                          [cpPositionRelativeToArrow]="true"
+                          [(colorPicker)]="colorHex1"
+                          (colorPickerChange) = "colorChange()"
+                          class="color-picker"></div>
+                        </li>
+                        <li class="d-inline">
+                          <div [style.background]="colorHex2"
+                          [cpPosition]="'right'"
+                          [cpPositionOffset]="'50%'"
+                          [cpPositionRelativeToArrow]="true"
+                          [(colorPicker)]="colorHex2"
+                          (colorPickerChange) = "colorChange()"
+                          class="color-picker"></div>
+                        </li>
+                      </ul>
+                    </div>
+                    <button class="mt-5" mat-raised-button color="primary" (click) = "save()">Save</button>
+                  </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  

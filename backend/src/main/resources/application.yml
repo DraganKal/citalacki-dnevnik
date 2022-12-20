@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  thymeleaf:
+    prefix: classpath:/mail/
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+mail:
+  mime:
+    encodeparameters: false
+    encodefilename: true
+flyway:
+  out-of-order: true
+  ignore-missing-migrations: true
+  validate-on-migrate: false
+document:
+  logo.path: src/main/resources/documents/logo
+  user-image.path: src/main/resources/documents/user-profile-image
+
+

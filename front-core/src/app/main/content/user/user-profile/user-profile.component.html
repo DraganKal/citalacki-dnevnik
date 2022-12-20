@@ -1,0 +1,255 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Profile'" [items]="['User']" [active_item]="'Profile'"></app-breadcrumb>
+      </div>
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card">
+              <div class="contact-grid profile-image">
+                <img [src]="profileImage? profileImage : './assets/images/user/profile-image.png'" alt="">
+              </div>
+            </div>
+            <div class="card">
+              <div class="header">
+                <h2>About User</h2>
+              </div>
+              <div class="tab-pane body active" id="about">
+                <small class="text-muted">Email address: </small>
+                <p>{{ user.email }}</p>
+                <hr>
+                <small class="text-muted">Phone: </small>
+                <p> {{ user.phone }}</p>
+                <hr>
+                <small class="text-muted">Address: </small>
+                <p>{{user.houseNumber}}, {{user.street}}, {{user.city}}.</p>
+                <hr>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="card">
+            <mat-tab-group>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon msr-2">tag_faces</mat-icon>
+                  About Me
+                </ng-template>
+                <div class="header">
+                    <h2>
+                      <strong>Account</strong> Settings</h2>
+                  </div>
+                  <div class="body">
+                  <form class="register-form m-4" [formGroup]="userForm">
+                    <div class="row clearfix">
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName" >
+                            <mat-icon matSuffix>face</mat-icon>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName" >
+                            <mat-icon matSuffix>tag_faces</mat-icon>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" required>
+                            <mat-icon matSuffix>email</mat-icon>
+                            <mat-error *ngIf="userForm.get('email').hasError('required')">
+                              Email is required
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName="phone">
+                            <mat-icon matSuffix>phone</mat-icon>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>User Type</mat-label>
+                              <mat-select formControlName="userType" >
+                                <mat-option value="EMPLOYEE" selected>Employee</mat-option>
+                                <mat-option value="PRACTICE_MANAGER">Practice manager</mat-option>
+                                <mat-option value="ADMINISTRATOR">Administrator</mat-option>
+                                <mat-option value="SUPER_ADMINISTRATOR">Super Administrator</mat-option>
+                              </mat-select>
+                              <mat-icon matSuffix>account_box</mat-icon>
+                              <mat-error *ngIf="userForm.get('userType').hasError('required')">
+                                User type is required
+                              </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                          <div class="form-group">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>City</mat-label>
+                              <input matInput formControlName="city">
+                              <mat-icon matSuffix>location_city</mat-icon>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                          <div class="form-group">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>Street</mat-label>
+                              <input matInput formControlName="street">
+                              <mat-icon matSuffix>location_on</mat-icon>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                          <div class="form-group">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>House Number</mat-label>
+                              <input matInput formControlName="houseNumber">
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                          <div class="form-group">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                              <mat-label>Zip</mat-label>
+                              <input matInput formControlName="zip">
+                            </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12">
+                        <div class="form-group">
+                          <mat-form-field class="example-full-width mb-3">
+                            <ngx-mat-file-input matInput formControlName="profileImageUrl" placeholder="Upload Profile Image" (change) = "imageUpload($event)">
+                            </ngx-mat-file-input>
+                            <mat-icon matSuffix>folder</mat-icon>
+                          </mat-form-field>
+                        </div>
+                    </div>
+                      <div class="col-md-12">
+                        <button mat-raised-button color="primary" (click)="submitUpdate()">Save Changes</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </mat-tab>
+  
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon msr-2">settings</mat-icon>
+                  Settings
+                </ng-template>
+                <div class="header">
+                  <h2>
+                    <strong>Security</strong> Settings</h2>
+                </div>
+                <div class="body">
+                  <div class="example-container">
+                    <form class="register-form m-4" [formGroup]="userPasswordForm">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Current Password</mat-label>
+                        <input matInput type="password" formControlName="currentPassword" required>
+                        <mat-icon matSuffix>security</mat-icon>
+                      </mat-form-field>
+                      <mat-form-field  class="example-full-width" appearance="fill">
+                        <mat-label>New Password</mat-label>
+                        <input matInput type="password" formControlName="newPassword" [type]="hide ? 'password' : 'text'" required>
+                        <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </a>
+                      <mat-error *ngIf="
+                          userPasswordForm.controls['newPassword'].invalid &&
+                          userPasswordForm.get('newPassword').touched
+                        ">
+                        {{ "SET_PASSWORD.PASSWORD_INFO" | translate }}
+                      </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                          <mat-label>Confirm New Password</mat-label>
+                          <input matInput type="password" formControlName="confirmPassword"  [errorStateMatcher]="matcher" required>
+                          <mat-icon matSuffix>security</mat-icon>
+                          <mat-error *ngIf="
+                          userPasswordForm.controls['confirmPassword'].hasError('required') &&
+                          userPasswordForm.get('confirmPassword').touched">
+                              {{ "SET_PASSWORD.CONFIRM_PASSWORD_REQUIRED" | translate }}
+                            </mat-error>
+                          <mat-error *ngIf="userPasswordForm.hasError('passwordMatch')">
+                            {{ "SET_PASSWORD.PASSWORDS_DONT_MATCH" | translate }}
+                          </mat-error>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                  <button mat-raised-button color="primary" (click)="securityUserUpdate()"
+                    [disabled]="userPasswordForm.invalid">
+                     {{ "SET_PASSWORD.SET_PASSWORD" | translate }}
+                    </button>
+                </div>
+               
+                <div class="body">
+                  <div>
+                    <ul>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('minlength') 
+                      || userPasswordForm.controls['newPassword'].hasError('maxlength') ? 'text-danger' : 'text-success'">
+                        {{ "SET_PASSWORD.PASSWORD_INFO_MESSAGE_ONE" | translate }}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('minlength') 
+                          || userPasswordForm.controls['newPassword'].hasError('maxlength') ? 'cancel' : 'check_circle' }}</mat-icon>
+                      </li>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasCapitalCase') 
+                      || userPasswordForm.controls['newPassword'].hasError('hasLowerCase') ? 'text-danger' : 'text-success'">
+                        {{ "SET_PASSWORD.PASSWORD_INFO_MESSAGE_TWO" | translate }}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasCapitalCase') 
+                          || userPasswordForm.controls['newPassword'].hasError('hasLowerCase') ? 'cancel' : 'check_circle' }}</mat-icon>
+                      </li>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasNumber') 
+                      ? 'text-danger' : 'text-success'">
+                        {{ "SET_PASSWORD.PASSWORD_INFO_MESSAGE_THREE" | translate }}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasNumber') 
+                          ? 'cancel' : 'check_circle' }}</mat-icon>
+                      </li>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasSpecialCharacter') 
+                       ? 'text-danger' : 'text-success'">
+                        {{ "SET_PASSWORD.PASSWORD_INFO_MESSAGE_FOUR" | translate }}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || userPasswordForm.controls['newPassword'].hasError('hasSpecialCharacter') 
+                          ? 'cancel' : 'check_circle' }}</mat-icon>
+                      </li>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || !userPasswordForm.controls['newPassword'].hasError('umlautsSharpS') 
+                      ? 'text-success' : 'text-danger'">
+                        {{ "SET_PASSWORD.PASSWORD_INFO_MESSAGE_FIVE" | translate }}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || !userPasswordForm.controls['newPassword'].hasError('umlautsSharpS') 
+                          ? 'check_circle' :'cancel' }}</mat-icon>
+                      </li>
+                      <li [ngClass]="userPasswordForm.controls['newPassword'].hasError('required') || !userPasswordForm.controls['newPassword'].hasError('hasSpace') 
+                      ? 'text-success' : 'text-danger'">
+                        {{ 'SET_PASSWORD.PASSWORD_INFO_MESSAGE_SIX' | translate}}
+                        <mat-icon style="font-size: 16px">{{ userPasswordForm.controls['newPassword'].hasError('required') || !userPasswordForm.controls['newPassword'].hasError('hasSpace') 
+                          ? 'check_circle' :'cancel' }}</mat-icon>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

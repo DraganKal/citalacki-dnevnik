@@ -1,0 +1,64 @@
+<section class="content" *ngIf="patient">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Details'" [items]="['Patient']" [active_item]="patient? patient.firstName + ' ' + patient.lastName: ''"></app-breadcrumb>
+      </div>
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card">
+              <div class="header">
+                <h2>{{ patient? patient.firstName: '' }} {{ patient? patient.lastName: '' }}</h2>
+              </div>
+              <div class="tab-pane body active" id="about">
+                <small class="text-muted">Email address: </small>
+                <p>{{ patient? patient.email: '' }}</p>
+                <hr>
+                <small class="text-muted">Phone: </small>
+                <p> {{ patient? patient.phone: '' }}</p>
+                <hr>
+                <small class="text-muted">Address: </small>
+                <p>{{patient? patient.houseNumber: ''}}, {{patient? patient.street: ''}}, {{patient? patient.city: ''}}.</p>
+                <hr>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+    
+          <div class="card">
+            <mat-tab-group>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon msr-2">account_box</mat-icon>
+                  Contacts
+                </ng-template>
+                 <app-contact [patient] = "patient"></app-contact>             
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon msr-2">event_note</mat-icon>
+                    Appointments
+                  </ng-template>
+              </mat-tab>
+              <mat-tab>
+                <ng-template mat-tab-label >
+                    <mat-icon class="example-tab-icon msr-2">dvr</mat-icon>
+                    Prescription data
+                  </ng-template>
+                  <app-prescription [patientId] = "patient.id"></app-prescription>
+              </mat-tab>
+
+              <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon msr-2">file_copy</mat-icon>
+                    Documents
+                  </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

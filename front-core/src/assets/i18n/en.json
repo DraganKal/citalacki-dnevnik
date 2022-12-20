@@ -1,0 +1,116 @@
+{
+  "MENUITEMS": {
+    "MANAGEMENT_SYSTEM": {
+      "TEXT": "Management system"
+    },
+    "CALENDAR": {
+      "TEXT": "Calendar/scheduling"
+    },
+    "DOCTORS": {
+      "TEXT": "Doctors",
+      "LIST": {
+        "ALL-DOCTOR": "All Doctors",
+        "ADD-DOCTOR": "Add Doctor",
+        "EDIT-DOCTOR": "Edit Doctor",
+        "PROFILE": "Doctor Profile"
+      }
+    },
+    "PATIENTS": {
+      "TEXT": "Patients",
+      "LIST": {
+        "ALL-PATIENT": "All Patients",
+        "ADD-PATIENT": "Add Patient",
+        "EDIT-PATIENT": "Edit Patient",
+        "PROFILE": "Patient Profile"
+      }
+    },
+    "TASK": {
+      "TEXT": "Task"
+    },
+    "CONTACTS": {
+      "TEXT": "Contacts"
+    },
+    "LOCATIONS": {
+      "TEXT": "Locations"
+    },
+    "ADMINISTRATION": {
+      "TEXT": "Administration"
+    },
+    "EMPLOYEES": {
+      "TEXT": "Employees"
+    },
+    "VEHICLES": {
+      "TEXT": "Vehicles"
+    },
+    "ACCOUNTING": {
+      "TEXT": "Accounting"
+    },
+    "CONTRACTS": {
+      "TEXT": "Contracts"
+    },
+    "PRODUCTS": {
+      "TEXT": "Products"
+    },
+    "CONTROLLING": {
+      "TEXT": "Controlling"
+    },
+    "APPLICATIONS": {
+      "TEXT": "Applications"
+    },
+    "SEARCH": {
+      "TEXT": "Search"
+    },
+    "PRACTICE_MANAGEMENT": {
+      "TEXT": "Practice Management"
+    }
+  },
+  "SUPER_ADMINISTRATOR": "Super Administrator",
+  "ADMINISTRATOR": "Administrator",
+  "PRACTICE_MANAGER": "Practice manager",
+  "EMPLOYEE": "Employee",
+  "PATIENT": "Patient",
+
+  "SET_PASSWORD": {
+    "WELCOME_INFO" : "Welcome to Logoass. Please set new password",
+    "EMPLOYEE_NOT_FOUND": "Employee not found...",
+    "USERNAME_ALREADY_EXIST": "Username already exist...",
+    "PASSWORD_INFO":
+      "Password length must be between 6 and 20 characters, must contain a lowercase letter, an uppercase letter, a number, and a special character.",
+    "PASSWORD_INFO_MESSAGE_ONE": "Your password must be at least 6 and at most 20 characters long." ,
+    "PASSWORD_INFO_MESSAGE_TWO": "The password must contain at least one uppercase and one lowercase letter.",
+    "PASSWORD_INFO_MESSAGE_THREE": "The password must contain at least one number.",
+    "PASSWORD_INFO_MESSAGE_FOUR": "The password must contain one of the following special character (# | ! | § | $ | - | ?).",
+    "PASSWORD_INFO_MESSAGE_FIVE": "Please do not use umlauts, sharp S or following special character (+ | % | &).",
+    "PASSWORD_INFO_MESSAGE_SIX": "Please make sure that the password field does not contain any spaces.",
+    "TOKEN_REQUIRED": "Token is required!",  
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "CONFIRM_PASSWORD_REQUIRED": "Confirm password is required",
+    "PASSWORDS_DONT_MATCH": "Password does not match",
+    "SET_PASSWORD": "Set password",
+    "PASSWORD_CHANGED_SUCCESSFULLY_INFO": "Password changed successfully. We will redirect you to sign in page",
+    "TOKEN_EXPIRED_INFO": "Your link expired. Please send new password link to email",
+    "INVALID_TOKEN_INFO": "Your link is used or expired. Please send new password link to email"
+  },
+
+  "SIGNIN": {
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "LOGIN": "Log In",
+    "USERNAME_REQUIRED": "Username is required",
+    "PASSWORD_REQUIRED": "Password is required",
+    "INFO": "Your language, speaking, voice and swallowing practice"
+  },
+
+  "FORGOT_PASSWORD": {
+    "INFO": "Forgot Password? Let Us Help You",
+    "ENTER_EMAIL": "Enter your registered email address.",
+    "EMAIL": "Email",
+    "EMAIL_VALID": "Please enter a valid email address",
+    "RESET_BUTTON": "Reset My Password",
+    "SIGN_IN": "Sign In?"
+  }
+  
+}
